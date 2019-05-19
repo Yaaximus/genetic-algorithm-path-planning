@@ -1,4 +1,4 @@
-from Population import Population
+import population
 from Fitness import Fitness
 from Ranking import Ranking
 from DNA import DNA
@@ -13,28 +13,28 @@ def main():
     npts = len(path_points)
     pop_max = 500
     mutation_rate = 0.001
-    start_index = 0
-    end_index = npts
+    start_index = int(0)
+    end_index = npts - 1
     generations = 1
     prev_best_fitness = 0
     nobs = 7
     nbits = ma.log10(npts) / ma.log10(2)
-    chr_len = ((nobs+2)*nbits)/nbits
+    chr_len = int(((nobs+2)*nbits)/nbits)
     stop_criteria = 0
 
-    population = Population(pop_max=pop_max, chr_len=chr_len, start_index=start_index, end_index=end_index, path_points=path_points)
+    initial_population = population.population(pop_max=pop_max, chr_len=chr_len, start_index=start_index, end_index=end_index, path_points=path_points)
 
-    initial_population = population.initialize_population()
+    # print initial_population
 
-    fitness = Fitness(path_points=path_points, chr_len=chr_len, new_pop=initial_population, pop_max=pop_max)
+    # fitness = Fitness(path_points=path_points, chr_len=chr_len, new_pop=initial_population, pop_max=pop_max)
 
-    chr_fitness = fitness.calculate_fitness()
+    # chr_fitness = fitness.calculate_fitness()
 
-    ranking = Ranking(chr_fitness=chr_fitness, new_pop=initial_population, pop_max=pop_max)
+    # ranking = Ranking(chr_fitness=chr_fitness, new_pop=initial_population, pop_max=pop_max)
 
-    ranked_population = ranking.calculate_ranking()
+    # ranked_population = ranking.calculate_ranking()
 
-    crossover_population = DNA(chr_fitness=chr_fitness, pop_max=pop_max, chr_len=chr_len, mutation_rate=mutation_rate, start_index=start_index, ranked_population=ranked_population, best_fitness_index=best_fitness_index, mutated_population=initial_population, prev_best_fitness=prev_best_fitness, stop_criteria=stop_criteria)
+    # crossover_population = DNA(chr_fitness=chr_fitness, pop_max=pop_max, chr_len=chr_len, mutation_rate=mutation_rate, start_index=start_index, ranked_population=ranked_population, best_fitness_index=best_fitness_index, mutated_population=initial_population, prev_best_fitness=prev_best_fitness, stop_criteria=stop_criteria)
 
 if __name__ == '__main__':
 
