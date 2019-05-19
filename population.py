@@ -10,7 +10,6 @@ def population(pop_max, chr_len, start_index, end_index, path_points):
     link_fit = _link_fit(link, path_points)
     link_prob = _link_prob(link_fit)
     link_cum_prob = np.cumsum(link_prob, axis=1)
-    print("link_cum_prob:", link_cum_prob)
     initial_pop = np.zeros((pop_max, chr_len))
     initial_pop[:, 0] = start_index
     initial_pop[:, chr_len - 1] = end_index
@@ -122,74 +121,46 @@ def _link_prob(link_fit):
 def _create_pop(pop_max, link_cum_prob, chr_len, start_index, end_index, link, initial_pop):
 
     for k in range(pop_max):
-
         i = start_index
-
-        for j in range(chr_len):
-
-            if j > 0 and j < (chr_len):
-
+        j = start_index + 1
+        while j < chr_len:
+            i = int(i)
+            if j > 0 and j < (chr_len - 1):
                 random_val = random.random()
-
                 if random_val < link_cum_prob[i][0]:
-
                     initial_pop[k][j] = link[i][1]
                     i = link[i][1]
-
-                    if _is_end_point(i, end_index):
-
-                        while j < (chr_len):
-
-                            initial_pop[k][j] = end_index
+                    if _both_equ(i, end_index):
+                        while j < (chr_len - 1):
+                            initial_pop[k][j+1] = end_index
                             j += 1
-
-                        print("k:", k, initial_pop[k])
-
                 elif random_val < link_cum_prob[i][1]:
-
                     initial_pop[k][j] = link[i][2]
                     i = link[i][2]
-
-                    if _is_end_point(i, end_index):
-
-                        while j < (chr_len):
-                            initial_pop[k][j] = end_index
+                    if _both_equ(i, end_index):
+                        while j < (chr_len - 1):
+                            initial_pop[k][j+1] = end_index
                             j += 1
-
-                        print("k:", k, initial_pop[k])
-
                 elif random_val < link_cum_prob[i][2]:
-
                     initial_pop[k][j] = link[i][3]
                     i = link[i][3]
-
-                    if _is_end_point(i, end_index):
-
-                        while j < (chr_len):
-
-                            initial_pop[k][j] = end_index
+                    if _both_equ(i, end_index):
+                        while j < (chr_len - 1):
+                            initial_pop[k][j+1] = end_index
                             j += 1
-
-                        print("k:", k, initial_pop[k])
-
                 elif random_val < link_cum_prob[i][3]:
-
                     initial_pop[k][j] = link[i][4]
                     i = link[i][4]
-
-                    if _is_end_point(i, end_index):
-
-                        while j < (chr_len):
-
-                            initial_pop[k][j] = end_index
+                    if _both_equ(i, end_index):
+                        while j < (chr_len - 1):
+                            initial_pop[k][j+1] = end_index
                             j += 1
+            j += 1
 
-                        print("k:", k, initial_pop[k])
-                        
     return initial_pop
 
 
-def _is_end_point(i, end_index):
+def _both_equ(i, end_index):
 
     return True if int(i) == int(end_index) else False
 
