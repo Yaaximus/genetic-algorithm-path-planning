@@ -22,15 +22,14 @@ def main():
     chr_len = int(((nobs+2)*nbits)/nbits)
     stop_criteria = 0
 
-    initial_population = population(pop_max=pop_max, chr_len=chr_len,
-                                    start_index=start_index, end_index=end_index, path_points=path_points)
+    initial_chr_population = population(
+        pop_max=pop_max, chr_len=chr_len, start_index=start_index,
+        end_index=end_index, path_points=path_points)
 
-    pop_fitness = fitness(path_points=path_points, chr_len=chr_len,
-                          new_pop=initial_population, pop_max=pop_max)
+    chr_pop_fitness = fitness(path_points=path_points, chr_len=chr_len,
+                              new_chr_pop=initial_chr_population, pop_max=pop_max)
 
-    print pop_fitness
-
-    # chr_fitness = fitness.calculate_fitness()
+    print chr_pop_fitness
 
     # ranking = Ranking(chr_fitness=chr_fitness, new_pop=initial_population, pop_max=pop_max)
 
