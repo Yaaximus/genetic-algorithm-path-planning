@@ -1,5 +1,5 @@
-import population
-from Fitness import Fitness
+from population import population
+from fitness import fitness
 from Ranking import Ranking
 from DNA import DNA
 
@@ -22,11 +22,13 @@ def main():
     chr_len = int(((nobs+2)*nbits)/nbits)
     stop_criteria = 0
 
-    initial_population = population.population(pop_max=pop_max, chr_len=chr_len, start_index=start_index, end_index=end_index, path_points=path_points)
+    initial_population = population(pop_max=pop_max, chr_len=chr_len,
+                                    start_index=start_index, end_index=end_index, path_points=path_points)
 
-    # print initial_population
+    pop_fitness = fitness(path_points=path_points, chr_len=chr_len,
+                          new_pop=initial_population, pop_max=pop_max)
 
-    # fitness = Fitness(path_points=path_points, chr_len=chr_len, new_pop=initial_population, pop_max=pop_max)
+    print pop_fitness
 
     # chr_fitness = fitness.calculate_fitness()
 
@@ -35,6 +37,7 @@ def main():
     # ranked_population = ranking.calculate_ranking()
 
     # crossover_population = DNA(chr_fitness=chr_fitness, pop_max=pop_max, chr_len=chr_len, mutation_rate=mutation_rate, start_index=start_index, ranked_population=ranked_population, best_fitness_index=best_fitness_index, mutated_population=initial_population, prev_best_fitness=prev_best_fitness, stop_criteria=stop_criteria)
+
 
 if __name__ == '__main__':
 

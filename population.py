@@ -6,8 +6,8 @@ import random
 def population(pop_max, chr_len, start_index, end_index, path_points):
 
     np.set_printoptions(threshold=np.nan)
-    link = _define_links()
-    link_fit = _link_fit(link, path_points)
+    link = define_links()
+    link_fit = _link_distance(link, path_points)
     link_prob = _link_prob(link_fit)
     link_cum_prob = np.cumsum(link_prob, axis=1)
     initial_pop = np.zeros((pop_max, chr_len))
@@ -19,7 +19,7 @@ def population(pop_max, chr_len, start_index, end_index, path_points):
     return initial_pop
 
 
-def _define_links():
+def define_links():
 
     link = -1 * np.ones((16, 5))
 
@@ -89,7 +89,7 @@ def _define_links():
     return link
 
 
-def _link_fit(link, path_points):
+def _link_distance(link, path_points):
 
     link_dist = np.zeros((np.shape(link)[0], np.shape(link)[1]-1))
 
