@@ -26,10 +26,12 @@ def main():
         pop_max=pop_max, chr_len=chr_len, start_index=start_index,
         end_index=end_index, path_points=path_points)
 
-    chr_pop_fitness = fitness(path_points=path_points, chr_len=chr_len,
-                              new_chr_pop=initial_chr_population, pop_max=pop_max)
+    chr_pop_fitness, chr_best_fitness_index = fitness(
+        path_points=path_points, chr_len=chr_len, 
+        new_chr_pop=initial_chr_population, pop_max=pop_max)
 
     print chr_pop_fitness
+    print chr_best_fitness_index
 
     # ranking = Ranking(chr_fitness=chr_fitness, new_pop=initial_population, pop_max=pop_max)
 
