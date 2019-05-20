@@ -26,23 +26,17 @@ def fitness(path_points, chr_len, new_chr_pop, pop_max):
 
 def chr_best_fit_ind(chr_fit):
 
-    y1 = np.where(chr_fit == np.amax(chr_fit))[0]
+    chr_best_fit_index = []
 
-    chr_fit_temp = chr_fit
+    while len(chr_best_fit_index) < 3:
 
-    for i in y1:
-        chr_fit_temp[i][0] = 0
+        y = np.where(chr_fit == np.amax(chr_fit))[0]
 
-    y2 = np.append(y1, values=np.where(
-        chr_fit_temp == np.amax(chr_fit_temp))[0])
+        for i in range(len(y)):
+            chr_best_fit_index.append(int(y[i]))
 
-    chr_fit_temp_2 = chr_fit_temp
-
-    for i in y2:
-        chr_fit_temp_2[i][0] = 0
-
-    chr_best_fit_index = np.append(y2, values=np.where(
-        chr_fit_temp_2 == np.amax(chr_fit_temp_2))[0])
+        for i in chr_best_fit_index:
+            chr_fit[i][0] = 0
 
     return chr_best_fit_index
 

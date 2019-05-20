@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from population import population
 from fitness import fitness
 from Ranking import Ranking
@@ -30,8 +31,9 @@ def main():
         path_points=path_points, chr_len=chr_len, 
         new_chr_pop=initial_chr_population, pop_max=pop_max)
 
-    print chr_pop_fitness
-    print chr_best_fitness_index
+    for i in chr_best_fitness_index:
+
+        print initial_chr_population[i]
 
     # ranking = Ranking(chr_fitness=chr_fitness, new_pop=initial_population, pop_max=pop_max)
 
