@@ -32,6 +32,10 @@ def main():
         new_chr_pop=initial_chr_population, pop_max=pop_max)
 
     for i in chr_best_fitness_index:
+        
+        print chr_pop_fitness[i]
+
+    for i in chr_best_fitness_index:
 
         print initial_chr_population[i]
 
