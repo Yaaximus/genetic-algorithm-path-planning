@@ -1,8 +1,15 @@
-import numpy as np
+from config import Config
 from population import define_links, calculate_distance
 
+import numpy as np
 
-def fitness(path_points, chr_len, new_chr_pop, pop_max):
+
+
+def fitness(new_chr_pop):
+
+    path_points = Config.path_points
+    chr_len = Config.chr_len
+    pop_max = Config.pop_max
 
     chromo_pts_consec_dist = chr_pts_consecutive_dist(
         path_points=path_points, chr_len=chr_len, chr_pop=new_chr_pop, pop_max=pop_max)

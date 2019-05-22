@@ -1,9 +1,17 @@
+from config import Config
+
 import numpy as np
 import math as ma
 import random
 
 
-def population(pop_max, chr_len, start_index, end_index, path_points):
+def population():
+
+    pop_max=Config.pop_max
+    chr_len=Config.chr_len
+    start_index=Config.start_index
+    end_index=Config.end_index
+    path_points=Config.path_points
 
     np.set_printoptions(threshold=np.nan)
     link = define_links()

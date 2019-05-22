@@ -1,7 +1,11 @@
+from config import Config
+
 import numpy as np
 
 
-def ranking(chr_pop_fitness, new_pop, pop_max):
+def ranking(chr_pop_fitness, new_pop):
+
+    pop_max = Config.pop_max
 
     chromo_prob = cal_prob(pop_max=pop_max, chr_pop_fitness=chr_pop_fitness)
 
