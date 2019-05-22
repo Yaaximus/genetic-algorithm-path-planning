@@ -28,16 +28,20 @@ def main():
         end_index=end_index, path_points=path_points)
 
     chr_pop_fitness, chr_best_fitness_index = fitness(
-        path_points=path_points, chr_len=chr_len, 
+        path_points=path_points, chr_len=chr_len,
         new_chr_pop=initial_chr_population, pop_max=pop_max)
 
-    # for i in chr_best_fitness_index:
-    #     print("Chromosome",i,"fitness:",chr_pop_fitness[i, 0])
-    #     print("Chromosome",i,initial_chr_population[i])
+    chr_pop_ranked = ranking(chr_pop_fitness=chr_pop_fitness,
+                             new_pop=initial_chr_population, pop_max=pop_max)
 
-    chr_pop_ranked = ranking(chr_pop_fitness=chr_pop_fitness, new_pop=initial_chr_population, pop_max=pop_max)
+    print("Initial chromosome population:", initial_chr_population)
+    print("Chromosome population fitness:", chr_pop_fitness)
 
-    print chr_pop_ranked
+    for i in chr_best_fitness_index:
+        print("Chromosome", i, "fitness:", chr_pop_fitness[i, 0])
+        print("Chromosome", i, initial_chr_population[i])
+
+    print("Chromosome population ranked:", chr_pop_ranked)
 
     # crossover_population = DNA(chr_fitness=chr_fitness, pop_max=pop_max, chr_len=chr_len, mutation_rate=mutation_rate, start_index=start_index, ranked_population=ranked_population, best_fitness_index=best_fitness_index, mutated_population=initial_population, prev_best_fitness=prev_best_fitness, stop_criteria=stop_criteria)
 
