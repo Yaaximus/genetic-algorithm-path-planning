@@ -5,17 +5,15 @@ import numpy as np
 
 def ranking(chr_pop_fitness, new_pop):
 
-    pop_max = Config.pop_max
-
-    chromo_prob = cal_prob(pop_max=pop_max, chr_pop_fitness=chr_pop_fitness)
+    chromo_prob = cal_prob(pop_max=Config.pop_max, chr_pop_fitness=chr_pop_fitness)
 
     chromo_cum_prob = np.cumsum(chromo_prob, axis=0)
 
     chromo_rank = _ranking_based_on_roulet_wheel_selection(
-        pop_max=pop_max, chr_cum_prob=chromo_cum_prob)
+        pop_max=Config.pop_max, chr_cum_prob=chromo_cum_prob)
 
     chromo_pop_ranked = _generate_mating_pool(
-        pop_max=pop_max, chr_rank=chromo_rank, pop=new_pop)
+        pop_max=Config.pop_max, chr_rank=chromo_rank, pop=new_pop)
 
     return chromo_pop_ranked
 
