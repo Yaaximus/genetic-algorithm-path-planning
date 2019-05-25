@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+
+"""
+Script provides functionality related to fitness of chromosomes based
+on total distance and connection b.w two consecutive nodes of a chromosome
+
+Author: Yasim Ahmad(yaaximus)
+
+Email: yasim.ahmed63@yahoo.com
+"""
+
 from config import Config
 from population import calculate_distance
 

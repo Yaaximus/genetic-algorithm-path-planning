@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+
+"""
+Script provide functionality related to initialization of population based
+on nodes(path points) and links b/w nodes(path points)
+
+Author: Yasim Ahmad(yaaximus)
+
+Email: yasim.ahmed63@yahoo.com
+"""
+
 from config import Config
 
 import numpy as np

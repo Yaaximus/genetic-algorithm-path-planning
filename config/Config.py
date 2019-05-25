@@ -15,8 +15,9 @@ nbits = ma.log10(npts) / ma.log10(2)
 chr_len = int(((nobs+2)*nbits)/nbits)
 stop_criteria = 0
 
+
 def define_links():
-    
+
     link = -1 * np.ones((16, 5))
 
     link[0][0] = 0

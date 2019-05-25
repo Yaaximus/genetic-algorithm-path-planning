@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+
+"""
+Script provide functionality related to ranking of the population. Ranking is 
+obtained using roulets wheel selection method.
+
+Author: Yasim Ahmad(yaaximus)
+
+Email: yasim.ahmed63@yahoo.com
+"""
+
 from config import Config
 
 import numpy as np
@@ -5,7 +16,8 @@ import numpy as np
 
 def ranking(chr_pop_fitness, new_pop):
 
-    chromo_prob = cal_prob(pop_max=Config.pop_max, chr_pop_fitness=chr_pop_fitness)
+    chromo_prob = cal_prob(pop_max=Config.pop_max,
+                           chr_pop_fitness=chr_pop_fitness)
 
     chromo_cum_prob = np.cumsum(chromo_prob, axis=0)
 
