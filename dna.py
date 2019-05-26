@@ -20,9 +20,25 @@ def dna(chr_pop_fitness, ranked_population, chr_best_fitness_index, init_pop):
 
     chromo_crossover_pop = _do_crossover(
         ranked_pop=ranked_population, chr_best_fit_indx=chr_best_fitness_index,
-         init_pop=init_pop)
+        init_pop=init_pop)
 
-    return chromo_crossover_pop
+    chromo_mutated_pop = _do_mutation(pop=chromo_crossover_pop)
+
+    return chromo_crossover_pop, chromo_mutated_pop
+
+
+def _do_mutation(pop):
+
+    mutated_pop = np.zeros((Config.pop_max, Config.chr_len))
+
+    for itr in range(Config.pop_max):
+        for k in range(Config.chr_len):
+            c = random.random()
+            if c < Config.mutation_rate and k is not 0:
+                mutated_pop[itr, k] = random.randint(1, Config.npts-2)
+            else:
+                mutated_pop[itr, k] = pop[itr, k]
+    return mutated_pop
 
 
 def _do_crossover(ranked_pop, chr_best_fit_indx, init_pop):
