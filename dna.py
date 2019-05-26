@@ -22,9 +22,9 @@ def dna(chr_pop_fitness, ranked_population, chr_best_fitness_index, init_pop):
         ranked_pop=ranked_population, chr_best_fit_indx=chr_best_fitness_index,
         init_pop=init_pop)
 
-    chromo_mutated_pop = _do_mutation(pop=chromo_crossover_pop)
+    chromo_crossover_mutated_pop = _do_mutation(pop=chromo_crossover_pop)
 
-    return chromo_crossover_pop, chromo_mutated_pop
+    return chromo_crossover_mutated_pop
 
 
 def _do_mutation(pop):
