@@ -35,6 +35,6 @@ new_chromosome_population=initial_chromosome_population)
 - chromosome_populationn_ranked = ranking(chromosome_population_fitness=
 chromosome_population_fitness, new_population=initial_chromosome_population)
 #### You can do crossover & mutation in main function like:
-- chr_crossover_population, chr_mutated_population = dna(chr_pop_fitness=
-chr_pop_fitness, ranked_population=chr_ranked_population,chr_best_fitness_index=
+- chr_crossover_mutated_population = dna(chr_pop_fitness=chr_pop_fitness, 
+ranked_population=chr_ranked_population, chr_best_fitness_index=
 chr_best_fitness_index, init_pop=initial_chr_population)
