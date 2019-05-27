@@ -16,6 +16,8 @@ from ranking import ranking
 from dna import dna
 
 from config import Config
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -57,8 +59,32 @@ def main():
         Config.generations += 1
 
     for i in range(3):
-        
-        print("Best chromosome number", i, "is:", chr_crossover_mutated_population[chr_best_fitness_index[i]])
+
+        print("Best chromosome number", i, "is:",
+              chr_crossover_mutated_population[chr_best_fitness_index[i]])
+
+    x = []
+    y = []
+    x_best = []
+    y_best = []
+
+    plt.figure()
+    plt.axis([0.0, 15.0, 0.0, 15.0])
+
+    for element in Config.path_points:
+        x.append(element[0])
+        y.append(element[1])
+
+    for element in chr_crossover_mutated_population[0]:
+
+        x_best.append(Config.path_points[int(element)][0])
+        y_best.append(Config.path_points[int(element)][1])
+
+    plt.plot(x, y, "ko")
+    plt.plot(x_best, y_best, "g-")
+    plt.draw()
+    plt.savefig("./docs/images/best_path.png")
+    plt.pause(0.02)
 
 
 if __name__ == '__main__':
