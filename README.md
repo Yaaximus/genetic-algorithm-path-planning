@@ -1,5 +1,7 @@
 # Python implementation of Genetic Algorithm in Path Planning
 
+![best_path_demo](https://user-images.githubusercontent.com/37571161/58435833-f5b53f00-80db-11e9-8f49-4963da3c2cbd.png)
+
 ## Running instruction:
 - Run the main.py file from directory. 
 - User can defined path points, links b/w path points, population size, mutation rate.
