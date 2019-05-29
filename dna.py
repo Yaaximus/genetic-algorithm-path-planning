@@ -22,22 +22,24 @@ def dna(chr_pop_fitness, ranked_population, chr_best_fitness_index, init_pop):
         ranked_pop=ranked_population, chr_best_fit_indx=chr_best_fitness_index,
         init_pop=init_pop)
 
-    chromo_crossover_mutated_pop = _do_mutation(pop=chromo_crossover_pop)
+    chromo_crossover_mutated_pop = _do_mutation(init_pop=chromo_crossover_pop)
 
     return chromo_crossover_mutated_pop
 
 
-def _do_mutation(pop):
+def _do_mutation(init_pop):
+    
+    mutated_pop = np.array(init_pop, copy=True)
 
-    mutated_pop = np.zeros((Config.pop_max, Config.chr_len))
-
-    for itr in range(Config.pop_max):
+    itr = 3
+    while itr < Config.pop_max:
         for k in range(Config.chr_len):
             c = random.random()
             if c < Config.mutation_rate and k is not 0:
                 mutated_pop[itr, k] = random.randint(1, Config.npts-2)
             else:
-                mutated_pop[itr, k] = pop[itr, k]
+                pass
+        itr += 1
     return mutated_pop
 
 

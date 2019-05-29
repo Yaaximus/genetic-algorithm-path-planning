@@ -74,8 +74,7 @@ def chr_fit_based_conn(pop_max, chr_len, chr_conn):
 
     for i in range(pop_max):
 
-        chr_conn_fit[i][0] = chr_conn[i][0] / \
-            np.sum(chr_conn[i], keepdims=True)
+        chr_conn_fit[i][0] = chr_conn[i][0] / ( Config.chr_len - 1 )
 
     return chr_conn_fit
 
