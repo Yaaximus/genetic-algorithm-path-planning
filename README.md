@@ -1,6 +1,6 @@
 # Python implementation of Genetic Algorithm in Path Planning
 
-![best_path_demo](https://user-images.githubusercontent.com/37571161/58585237-97ba6000-8271-11e9-9a13-015e47b80e7b.png)
+![GA_path_planning](https://user-images.githubusercontent.com/37571161/58662732-51820100-8344-11e9-97fb-a66e6e1cc877.gif)
 
 ## Running instruction:
 - Run the main.py file from directory. 

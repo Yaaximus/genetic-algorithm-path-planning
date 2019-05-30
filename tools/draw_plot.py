@@ -2,27 +2,26 @@ from config import Config
 import matplotlib.pyplot as plt
 
 
-def draw_plot():
+def show_plot(best_chromosome):
 
     plt.figure(num=1)
     plt.clf()
-    plt.axis([-1.0, 16.0, -1.0, 16.0])
+    plt.axis([Config.plt_ax_x_min, Config.plt_ax_x_max, Config.plt_ax_y_min,
+        Config.plt_ax_y_max])
 
     _draw_path_points()
     _draw_obstacles()
 
-    plt.draw()
-    plt.savefig("./docs/images/"+str(Config.img_iter_no)+".png")
-    Config.img_iter_no += 1
-    plt.pause(0.01)
-
-
-def draw_best_path(best_chromosome):
-
-    draw_plot()
-
     best_path_x = []
     best_path_y = []
+
+    plt.annotate('Start Point', xy=(Config.path_points[int(best_chromosome[0])][0] 
+        + Config.plt_tolerance, Config.path_points[int(best_chromosome[0])][1]))
+    plt.annotate('Goal Point', xy=(Config.path_points[int(best_chromosome[-1])][0]
+        + Config.plt_tolerance, Config.path_points[int(best_chromosome[-1])][1]))
+
+    plt.text(x=Config.plt_ax_x_min, y=Config.plt_ax_y_max + Config.plt_tolerance, 
+        s='Generation:(%s)'%(Config.generations))
 
     for element in best_chromosome:
 
