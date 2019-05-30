@@ -26,6 +26,7 @@ selection method
 - bug fixed in create population function
 - bug related to chromosome population fitness best indices removed
 - Bug in generate mating pool function of ranking file fixed
+- Bug removed in function check fitness based on connection in fitness file
 
 ## Example for usage: 
 #### You can initialize population in main function like:

@@ -15,6 +15,7 @@ nbits = ma.log10(npts) / ma.log10(2)
 chr_len = int(((nobs+2)*nbits)/nbits)
 stop_criteria = 0
 stop_generation = False
+img_iter_no = 1
 
 
 def define_links():

@@ -9,12 +9,11 @@ Author: Yasim Ahmad(yaaximus)
 
 Email: yasim.ahmed63@yahoo.com
 """
-
-from population import population
-from fitness import fitness
-from ranking import ranking
-from dna import dna
-from draw_plot import draw_plot
+from tools.population import population
+from tools.fitness import fitness
+from tools.ranking import ranking
+from tools.dna import dna
+from tools.draw_plot import draw_plot, draw_best_path
 
 from config import Config
 
@@ -31,6 +30,8 @@ def main():
     chr_crossover_mutated_population = dna(chr_pop_fitness=chr_pop_fitness,
         ranked_population=chr_ranked_population, chr_best_fitness_index=
         chr_best_fitness_index, init_pop=initial_chr_population)
+
+    draw_plot()
 
     while not Config.stop_generation:
 
@@ -54,16 +55,11 @@ def main():
         if Config.stop_criteria >= 5:
             Config.stop_generation = True
 
+        print("Generations:", Config.generations)
+        print("Best chromosome is:", chr_crossover_mutated_population[chr_best_fitness_index[0]])
+
+        draw_best_path(best_chromosome=chr_crossover_mutated_population[0])
         Config.generations += 1
-
-    for i in range(3):
-
-        print("Best chromosome number", i, "is:",
-              chr_crossover_mutated_population[chr_best_fitness_index[i]])
-
-    print("Generations:", Config.generations)
-
-    draw_plot(best_chromosome=chr_crossover_mutated_population[0])
 
 if __name__ == '__main__':
 

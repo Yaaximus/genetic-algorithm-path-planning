@@ -10,7 +10,7 @@ Email: yasim.ahmed63@yahoo.com
 """
 
 from config import Config
-from population import calculate_distance
+from tools.population import calculate_distance
 
 import numpy as np
 

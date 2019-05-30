@@ -1,33 +1,51 @@
 from config import Config
 import matplotlib.pyplot as plt
 
-def draw_plot(best_chromosome):
 
-    node_x = []
-    node_y = []
-    best_path_x = []
-    best_path_y = []
+def draw_plot():
 
-    plt.figure()
+    plt.figure(num=1)
+    plt.clf()
     plt.axis([-1.0, 16.0, -1.0, 16.0])
 
+    _draw_path_points()
     _draw_obstacles()
 
-    for element in Config.path_points:
-        node_x.append(element[0])
-        node_y.append(element[1])
+    plt.draw()
+    plt.savefig("./docs/images/"+str(Config.img_iter_no)+".png")
+    Config.img_iter_no += 1
+    plt.pause(0.01)
+
+
+def draw_best_path(best_chromosome):
+
+    draw_plot()
+
+    best_path_x = []
+    best_path_y = []
 
     for element in best_chromosome:
 
         best_path_x.append(Config.path_points[int(element)][0])
         best_path_y.append(Config.path_points[int(element)][1])
 
-    plt.plot(node_x, node_y, "ko")
     plt.plot(best_path_x, best_path_y, "g-")
-
     plt.draw()
-    plt.savefig("./docs/images/best_path.png")
-    plt.pause(5)
+    plt.savefig("./docs/images/"+str(Config.img_iter_no)+".png")
+    Config.img_iter_no += 1
+    plt.pause(0.01)
+
+
+def _draw_path_points():
+
+    node_x = []
+    node_y = []
+
+    for element in Config.path_points:
+        node_x.append(element[0])
+        node_y.append(element[1])
+
+    plt.plot(node_x, node_y, "ko")
 
 
 def _draw_obstacles():
@@ -36,7 +54,8 @@ def _draw_obstacles():
     obs_1_y = [9, 9, 12, 12, 9]
     plt.fill(obs_1_x, obs_1_y, "r")
 
-    plt.legend(('Obstacles', ''), loc='upper right', fontsize='small', numpoints=1, markerscale=0.5, labelspacing=1)
+    plt.legend(('Path points', 'Obstacles'), loc='upper right', fontsize='small',
+               numpoints=1, markerscale=0.5, labelspacing=1)
 
     obs_2_x = [3, 4, 4, 3, 3]
     obs_2_y = [6.5, 6.5, 4, 4, 6.5]
