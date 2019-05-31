@@ -3,6 +3,14 @@ import matplotlib.pyplot as plt
 
 
 def show_plot(best_chromosome):
+    """
+    This function is responsible for displaying plot.
+    
+    Parameters
+    ----------
+    best_chromosome : [numpy.ndarray]
+        [numpy array of best chromosome in population of chromosomes]
+    """
 
     plt.figure(num=1)
     plt.clf()
@@ -36,6 +44,9 @@ def show_plot(best_chromosome):
 
 
 def _draw_path_points():
+    """
+    This function is responsible for displaying path points on plot.
+    """
 
     node_x = []
     node_y = []
@@ -48,6 +59,9 @@ def _draw_path_points():
 
 
 def _draw_obstacles():
+    """
+    This function is responsible for displaying obstacles on plot.
+    """
 
     obs_1_x = [2.5, 3.5, 3.5, 2.5, 2.5]
     obs_1_y = [9, 9, 12, 12, 9]

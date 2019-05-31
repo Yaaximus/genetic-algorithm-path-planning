@@ -30,14 +30,12 @@ selection method
 
 ## Example for usage: 
 #### You can initialize population in main function like:
-- initial_chromosome_population = population()
+- chr_population = population()
 #### You can calculate fitness & find best fitness indices in main function like:
-- chromosome_population_fitness, chromosome_best_fitness_index = fitness(
-new_chromosome_population=initial_chromosome_population)
+- chr_pop_fitness, chr_best_fitness_index = fitness(chr_pop=chr_population)
 #### You can obtain ranked population in main function like:
-- chromosome_populationn_ranked = ranking(chromosome_population_fitness=
-chromosome_population_fitness, new_population=initial_chromosome_population)
+- chr_ranked_population = ranking(chr_pop_fitness=chr_pop_fitness, pop=chr_population)
 #### You can do crossover & mutation in main function like:
 - chr_crossover_mutated_population = dna(chr_pop_fitness=chr_pop_fitness, 
-ranked_population=chr_ranked_population, chr_best_fitness_index=
-chr_best_fitness_index, init_pop=initial_chr_population)
+    ranked_population=chr_ranked_population, chr_best_fitness_index=
+    chr_best_fitness_index, last_pop=chr_population)

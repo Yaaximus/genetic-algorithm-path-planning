@@ -3,7 +3,7 @@
 """
 Script containing functionality related to DNA in Genetics like crossover & mutation.
 
-Contains: 'do crossover' function
+Contains: 'do crossover' & 'do mutation' function
 
 Author: Yasim Ahmad(yaaximus)
 
@@ -16,20 +16,53 @@ import numpy as np
 import random
 
 
-def dna(chr_pop_fitness, ranked_population, chr_best_fitness_index, init_pop):
+def dna(chr_pop_fitness, ranked_population, chr_best_fitness_index, last_pop):
+    """
+    This function encapsulates functionality related to dna like crossover
+    and mutation.
+
+    Parameters
+    ----------
+    chr_pop_fitness : [numpy.ndarray]
+        [Contains fitness values of chromosome population]
+    ranked_population : [numpy.ndarray]
+        [Contains numpy array of ranked chromosome population]
+    chr_best_fitness_index : [list]
+        [Contains list of best fitness indices in chromosome population]
+    last_pop : [numpy.ndarray]
+        [Contains numpy array of last population]
+
+    Returns
+    -------
+    [numpy.ndarray]
+        [numpy array of chromosome with have gone through random crossover and mutation]
+    """
 
     chromo_crossover_pop = _do_crossover(
         ranked_pop=ranked_population, chr_best_fit_indx=chr_best_fitness_index,
-        init_pop=init_pop)
+        pop=last_pop)
 
-    chromo_crossover_mutated_pop = _do_mutation(init_pop=chromo_crossover_pop)
+    chromo_crossover_mutated_pop = _do_mutation(pop=chromo_crossover_pop)
 
     return chromo_crossover_mutated_pop
 
 
-def _do_mutation(init_pop):
-    
-    mutated_pop = np.array(init_pop, copy=True)
+def _do_mutation(pop):
+    """
+    This function is responsible for handling mutation in population of chromosomes.
+
+    Parameters
+    ----------
+    pop : [numpy.ndarray]
+        [numpy array of chromosome population which will undergo mutation]
+
+    Returns
+    -------
+    [numpy.ndarray]
+        [numpy array of chromosome population undergone mutation]
+    """
+
+    mutated_pop = np.array(pop, copy=True)
 
     itr = 3
     while itr < Config.pop_max:
@@ -43,13 +76,31 @@ def _do_mutation(init_pop):
     return mutated_pop
 
 
-def _do_crossover(ranked_pop, chr_best_fit_indx, init_pop):
+def _do_crossover(ranked_pop, chr_best_fit_indx, pop):
+    """
+    This function is responsible for handling crossover in population of chromosomes.
+
+    Parameters
+    ----------
+    ranked_pop : [numpy.ndarray]
+        [numpy array of chromosome population which will undergo crossover]
+    chr_best_fit_indx : [list]
+        [Contains list of best fitness indices in chromosome population]
+    pop : [numpy.ndarray]
+        [numpy array of chromosome population to get best fitness chromosomes
+         from last population]
+
+    Returns
+    -------
+    [numpy.ndarray]
+        [numpy array of chromosome population undergone crossover]
+    """
 
     crossover_pop = np.zeros((Config.pop_max, Config.chr_len))
 
-    crossover_pop[0, :] = init_pop[chr_best_fit_indx[0], :]
-    crossover_pop[1, :] = init_pop[chr_best_fit_indx[1], :]
-    crossover_pop[2, :] = init_pop[chr_best_fit_indx[2], :]
+    crossover_pop[0, :] = pop[chr_best_fit_indx[0], :]
+    crossover_pop[1, :] = pop[chr_best_fit_indx[1], :]
+    crossover_pop[2, :] = pop[chr_best_fit_indx[2], :]
 
     itr = 3
 

@@ -24,6 +24,17 @@ plt_ax_y_max = 16.0
 
 
 def define_links():
+    """
+    This function defines the links b/w path points
+    
+    Returns
+    -------
+    [numpy.ndarray]
+        [Every path point has a number of allowed connection with other path 
+        points. Those allowed connections are defined below. During calculation
+        of fitness of population if two consecutive path points are connected
+        then the fitness of that chromosome increases]
+    """
 
     link = -1 * np.ones((16, 5))
 
