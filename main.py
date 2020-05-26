@@ -34,6 +34,8 @@ def main():
         ranked_population=chr_ranked_population, chr_best_fitness_index=
         chr_best_fitness_index, last_pop=chr_population)
 
+    show_plot(best_chromosome=chr_crossover_mutated_population[0])
+
     while not Config.stop_generation:
 
         prev_best_fit = chr_pop_fitness[chr_best_fitness_index[0], 0]
@@ -60,6 +62,8 @@ def main():
 
         show_plot(best_chromosome=chr_crossover_mutated_population[0])
         Config.generations += 1
+
+    show_plot(best_chromosome=chr_crossover_mutated_population[0], inf_time=True)
 
 if __name__ == '__main__':
 

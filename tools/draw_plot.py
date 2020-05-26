@@ -2,7 +2,7 @@ from config import Config
 import matplotlib.pyplot as plt
 
 
-def show_plot(best_chromosome):
+def show_plot(best_chromosome, inf_time=False):
     """
     This function is responsible for displaying plot.
     
@@ -40,7 +40,10 @@ def show_plot(best_chromosome):
     plt.draw()
     plt.savefig("./docs/images/"+str(Config.img_iter_no)+".png")
     Config.img_iter_no += 1
-    plt.pause(0.01)
+    if not inf_time:
+        plt.pause(0.01)
+    else:
+        plt.show()
 
 
 def _draw_path_points():
